@@ -1,0 +1,33 @@
+= foma
+
+A wrapper for the FOMA finite state library.
+
+The wrapper is very rudimentary (or an early version, if you like). Only
+loading of an FSM and the operations 'apply up' and 'apply down' are
+supported.
+
+== Installation
+
+  gem install foma
+
+== Usage
+
+    fsm = FOMA::FSM.new("fsm.bin")
+
+    fsm.apply_up("foo")
+    # => true
+
+    fsm.apply_down("bar")
+    # => true
+
+    fsm.apply_up("foo") do |d|
+      puts d
+    end
+
+== Development
+
+The project is hosted on github on http://github.com/mlj/ruby-foma.
+
+== License
+
+MIT
