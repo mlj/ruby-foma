@@ -12,13 +12,20 @@ Gem::Specification.new do |s|
   s.date = %q{2011-10-05}
   s.description = %q{A wrapper for the FOMA finite state library}
   s.email = %q{mariuslj (at) ifi [dot] uio (dot) no}
+  s.extensions = ["ext/extconf.rb"]
   s.extra_rdoc_files = [
     "README.rdoc"
   ]
   s.files = [
     "CHANGELOG",
+    "README.rdoc",
+    "Rakefile",
+    "VERSION",
+    "ext/extconf.rb",
     "ext/foma.c",
     "foma.gemspec",
+    "test/.gitignore",
+    "test/test_foma.bin",
     "test/test_foma.rb"
   ]
   s.homepage = %q{http://github.com/mlj/ruby-foma}
