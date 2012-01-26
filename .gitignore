@@ -1,2 +1,5 @@
 pkg
 doc
+ext/Makefile
+ext/*.so
+ext/*.o
