@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{foma}
-  s.version = "0.1.0"
+  s.name = "foma"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Marius L. J\303\270hndal"]
-  s.date = %q{2011-10-05}
-  s.description = %q{A wrapper for the FOMA finite state library}
-  s.email = %q{mariuslj (at) ifi [dot] uio (dot) no}
+  s.authors = ["Marius L. J\u{f8}hndal"]
+  s.date = "2012-01-26"
+  s.description = "A wrapper for the FOMA finite state library"
+  s.email = "mariuslj (at) ifi [dot] uio (dot) no"
   s.extensions = ["ext/extconf.rb"]
   s.extra_rdoc_files = [
     "README.rdoc"
@@ -28,14 +28,13 @@ Gem::Specification.new do |s|
     "test/test_foma.bin",
     "test/test_foma.rb"
   ]
-  s.homepage = %q{http://github.com/mlj/ruby-foma}
+  s.homepage = "http://github.com/mlj/ruby-foma"
   s.require_paths = ["lib"]
-  s.rubyforge_project = %q{foma}
-  s.rubygems_version = %q{1.3.7}
-  s.summary = %q{FOMA finite state library interface}
+  s.rubyforge_project = "foma"
+  s.rubygems_version = "1.8.11"
+  s.summary = "FOMA finite state library interface"
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
