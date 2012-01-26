@@ -3,6 +3,10 @@
 
 /*:enddoc:*/
 
+#ifndef RSTRING_PTR /* Ruby 1.8 compatibility */
+#define RSTRING_PTR(ptr) RSTRING(ptr)->ptr
+#endif
+
 VALUE mFOMA = Qnil;
 VALUE mFSM = Qnil;
 
@@ -18,8 +22,8 @@ static void foma_fsm_mark(struct foma_fsm *t)
 static void foma_fsm_free(struct foma_fsm *t)
 {
   if (t) {
-    fsm_destroy(t->net);
     apply_clear(t->ah);
+    fsm_destroy(t->net);
     free(t);
   }
 }
@@ -38,24 +42,23 @@ static VALUE foma_fsm_init(VALUE obj, VALUE filename)
 
   t = malloc(sizeof(struct foma_fsm));
 
-  if (!t) {
-    rb_raise(rb_eRuntimeError, "Error allocating memory");
-  }
+  if (!t)
+    rb_raise(rb_eRuntimeError, "error allocating memory");
 
-  file = fopen(RSTRING(filename)->ptr, "rb");
+  file = fopen(RSTRING_PTR(filename), "rb");
 
   if (!file) {
     free(t);
-    rb_raise(rb_eRuntimeError, "Unable to open file %s", RSTRING(filename)->ptr);
+    rb_raise(rb_eRuntimeError, "unable to open file");
   }
 
   fclose(file);
 
-  t->net = fsm_read_binary_file(RSTRING(filename)->ptr);
+  t->net = fsm_read_binary_file(RSTRING_PTR(filename));
 
   if (!t->net) {
     free(t);
-    rb_raise(rb_eRuntimeError, "Unable to read file %s", RSTRING(filename)->ptr);
+    rb_raise(rb_eRuntimeError, "unable to read file");
   }
 
   t->ah = apply_init(t->net);
@@ -66,6 +69,7 @@ static VALUE foma_fsm_init(VALUE obj, VALUE filename)
 
 static VALUE foma_fsm_apply(VALUE self, VALUE string, char *(*applyer)())
 {
+  int enc = rb_enc_find_index("UTF-8");
   struct foma_fsm *t;
   char *result;
 
@@ -73,14 +77,23 @@ static VALUE foma_fsm_apply(VALUE self, VALUE string, char *(*applyer)())
 
   Data_Get_Struct(self, struct foma_fsm, t);
 
-  result = applyer(t->ah, RSTRING(string)->ptr);
+  result = applyer(t->ah, RSTRING_PTR(string));
 
   if (result) {
     if (rb_block_given_p()) {
-      rb_yield(rb_str_new2(result));
+      VALUE string = rb_str_new2(result);
+#ifdef HAVE_RUBY_ENCODING_H
+      rb_enc_associate_index(string, enc);
+#endif
+      rb_yield(string);
 
-      while (result = applyer(t->ah, NULL))
-        rb_yield(rb_str_new2(result));
+      while (result = applyer(t->ah, NULL)) {
+        VALUE string = rb_str_new2(result);
+#ifdef HAVE_RUBY_ENCODING_H
+        rb_enc_associate_index(string, enc);
+#endif
+        rb_yield(string);
+      }
     }
 
     return Qtrue;
