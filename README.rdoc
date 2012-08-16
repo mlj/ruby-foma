@@ -10,6 +10,11 @@ supported.
 
   gem install foma
 
+If the foma headers and library are installed in a non-standard location, you
+can specify the relevant paths like this:
+
+  gem install foma -- --with-foma-include=/some/where --with-foma-lib=/some/where
+
 == Usage
 
     fsm = FOMA::FSM.new("fsm.bin")
