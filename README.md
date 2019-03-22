@@ -1,5 +1,8 @@
 # ruby-foma
 
+[![Gem Version](https://badge.fury.io/rb/ruby-foma.svg)](http://badge.fury.io/rb/ruby-foma)
+[![Build Status](https://secure.travis-ci.org/mlj/ruby-foma.svg?branch=master)](http://travis-ci.org/mlj/ruby-foma?branch=master)
+
 ruby-foma is a wrapper for the FOMA finite state library.
 
 The wrapper only provides fuctions for loading an FSM and for applying the
