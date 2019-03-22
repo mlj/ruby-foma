@@ -14,11 +14,13 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.files         = Dir["{ext,lib,test}/**/*"] + %w(README.md LICENSE)
-  spec.require_paths = ["lib"]
-  spec.extensions    = ["ext/extconf.rb"]
+  spec.require_paths = ["ext", "lib"]
+  spec.extensions    = ["ext/foma/extconf.rb"]
 
   spec.required_ruby_version = '>= 2.2'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake', '~> 12.0'
+  spec.add_development_dependency 'rake-compiler'
+  spec.add_development_dependency 'minitest'
 end

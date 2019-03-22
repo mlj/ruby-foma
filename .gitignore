@@ -1,5 +1,4 @@
 pkg
-doc
-ext/Makefile
-ext/*.so
-ext/*.o
+lib/foma/foma.so
+lib/foma/foma.bundle
+tmp

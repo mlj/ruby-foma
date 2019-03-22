@@ -1,13 +1,13 @@
-# coding:utf-8
-require 'foma'
-require 'test/unit'
+require_relative 'test_helper'
 
 TEST_DIRECTORY = File.expand_path(File.dirname(__FILE__))
-TEST_FSM       = File.join(TEST_DIRECTORY, 'test_foma.bin')
+TEST_FSM       = File.join(TEST_DIRECTORY, 'foma_test.bin')
 
-class InitTestCase < Test::Unit::TestCase
+class InitTestCase < Minitest::Test
   def test_foma_init
     fsm = FOMA::FSM.new(TEST_FSM)
+
+    assert !fsm.nil?
   end
 
   def test_foma_acceptance
