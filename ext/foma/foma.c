@@ -1,4 +1,7 @@
 #include "ruby.h"
+#ifdef HAVE_RUBY_ENCODING_H
+#include "ruby/encoding.h"
+#endif
 #include <fomalib.h>
 
 /*:enddoc:*/
@@ -69,7 +72,9 @@ static VALUE foma_fsm_init(VALUE obj, VALUE filename)
 
 static VALUE foma_fsm_apply(VALUE self, VALUE string, char *(*applyer)())
 {
+#ifdef HAVE_RUBY_ENCODING_H
   int enc = rb_enc_find_index("UTF-8");
+#endif
   struct foma_fsm *t;
   char *result;
 
@@ -87,7 +92,7 @@ static VALUE foma_fsm_apply(VALUE self, VALUE string, char *(*applyer)())
 #endif
       rb_yield(string);
 
-      while (result = applyer(t->ah, NULL)) {
+      while ((result = applyer(t->ah, NULL))) {
         VALUE string = rb_str_new2(result);
 #ifdef HAVE_RUBY_ENCODING_H
         rb_enc_associate_index(string, enc);
