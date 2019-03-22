@@ -19,10 +19,10 @@ gem 'foma'
 and run `bundle install`.
 
 If the foma headers and library are installed in a non-standard location, you
-may have to specify the installation path:
+may have to specify the installation path, e.g
 
 ```shell
-gem install foma -- --with-foma-include=/some/where --with-foma-lib=/some/where
+gem install foma -- --with-foma-include=$HOME/include --with-foma-lib=$HOME/lib
 ```
 
 Usage
