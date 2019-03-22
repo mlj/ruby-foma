@@ -6,16 +6,17 @@ The wrapper only provides fuctions for loading an FSM and for applying the
 operations 'apply up' and 'apply down'.  But this is most likely all you will
 need in an application...
 
-Installation
-------------
+## Installation
 
 ```shell
 gem install foma
 ```
-or add the following line to your Gemfile:
+or add the following line to your Gemfile
+
 ```ruby
 gem 'foma'
 ```
+
 and run `bundle install`.
 
 If the foma headers and library are installed in a non-standard location, you
@@ -25,8 +26,7 @@ may have to specify the installation path, e.g
 gem install foma -- --with-foma-include=$HOME/include --with-foma-lib=$HOME/lib
 ```
 
-Usage
------
+## Usage
 
 ```ruby
 fsm = FOMA::FSM.new("fsm.bin")
@@ -42,12 +42,10 @@ fsm.apply_up("foo") do |d|
 end
 ```
 
-Development
------------
+## Development
 
-The project is hosted on github on http://github.com/mlj/ruby-foma.
+The project is hosted on [GitHub](http://github.com/mlj/ruby-foma).
 
-License
--------
+## License
 
 MIT
