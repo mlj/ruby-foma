@@ -6,17 +6,20 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    minitest (5.11.3)
-    rake (12.3.2)
-    rake-compiler (1.0.7)
+    minitest (5.14.1)
+    rake (12.3.3)
+    rake-compiler (1.1.0)
       rake
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler
+  bundler (~> 2.0)
   foma!
-  minitest
+  minitest (~> 5.11)
   rake (~> 12.0)
-  rake-compiler
+  rake-compiler (~> 1.0)
+
+BUNDLED WITH
+   2.1.4
