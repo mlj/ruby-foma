@@ -7,6 +7,8 @@ foma is a wrapper for the FOMA finite state library.
 
 This wrapper only provides functions for loading an FSM and for invoking the operations `apply up` and `apply down`.
 
+Ruby 2.4 or higher required.
+
 ## Installation
 
 ```shell

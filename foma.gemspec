@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = %w[ext lib]
   spec.extensions    = ['ext/foma/extconf.rb']
 
-  spec.required_ruby_version = '>= 2.2'
+  spec.required_ruby_version = '>= 2.4'
 
   spec.add_development_dependency 'bundler', '~> 2.1.4'
   spec.add_development_dependency 'minitest', '~> 5.14.1'
