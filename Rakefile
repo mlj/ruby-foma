@@ -2,8 +2,8 @@ require 'bundler/gem_tasks'
 require 'rake/extensiontask'
 require 'rake/testtask'
 
-Rake::ExtensionTask.new "foma" do |ext|
-  ext.lib_dir = "lib/foma"
+Rake::ExtensionTask.new 'foma' do |ext|
+  ext.lib_dir = 'lib/foma'
 end
 
 Rake::TestTask.new(:test) do |t|
@@ -12,4 +12,4 @@ Rake::TestTask.new(:test) do |t|
   t.test_files = FileList['test/*_test.rb']
 end
 
-task :default => [:clobber, :compile, :test, :build]
+task default: %i[clobber compile test build]

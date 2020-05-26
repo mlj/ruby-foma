@@ -1,0 +1,15 @@
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+# Offense count: 1
+# Configuration parameters: Include.
+# Include: **/*.gemspec
+Gemspec/RequiredRubyVersion:
+  Exclude:
+    - 'foma.gemspec'
+
+# Offense count: 1
+# Configuration parameters: AllowedVariables.
+Style/GlobalVars:
+  Exclude:
+    - 'ext/foma/extconf.rb'
