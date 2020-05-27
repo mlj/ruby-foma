@@ -13,11 +13,18 @@ os:
   - osx
   - linux
 
+addons:
+  apt:
+    packages:
+      - libfoma-dev
+  homebrew:
+    packages:
+      - foma
+
 before_install:
-  - sudo apt-get install -y libfoma-dev
   - gem install bundler -v 2.1.4
 
 script:
   - rake
-  - echo "Rubocop $(bundle exec rubocop --version)"
+  - bundle exec rubocop --version
   - bundle exec rubocop -S -E
